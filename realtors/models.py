@@ -9,7 +9,7 @@ class Realtor(models.Model):
 
     # TODO: Define fields here
     name = models.CharField(_("Name"), max_length=200)
-    photo = models.ImageField(_("Photo"), upload_to='photo/%Y%m%d/')
+    photo = models.ImageField(_("Photo"), upload_to='photos/%Y/%m/%d/')
     description = models.TextField(_("Description"), blank=True)
     phone = models.CharField(_("Mobile Number"), max_length=50)
     email = models.CharField(_("Email"), max_length=50)
