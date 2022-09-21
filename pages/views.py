@@ -1,5 +1,3 @@
-from multiprocessing import context
-from numbers import Real
 from django.shortcuts import render
 from listings.models import Listing
 from realtors.models import Realtor
