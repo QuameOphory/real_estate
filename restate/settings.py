@@ -149,3 +149,9 @@ from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+
+GOOGLE_API_KEY = 'AIzaSyCYh4TyYzDRIrGyG7Ty6-uXqo0c3rSw0eA'
+
+RECAPTCHA_KEY = '6LcOAiciAAAAAI_AVRNq9fidqGjwh8mqtMSG3mko'
+
+RECAPTCHA_SECRET_KEY = '6LcOAiciAAAAADm1GEZsE-_STY7zZOND0neABmie'
