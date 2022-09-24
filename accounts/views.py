@@ -1,9 +1,8 @@
-from email import message
-import re
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
+from contacts.models import Contact
 
 # Create your views here.
 
@@ -69,4 +68,10 @@ def logout(request):
 
 
 def dashboard(request):
-    return render(request, 'accounts/dashboard.html')
+    user = auth.get_user(request)
+    contacts = Contact.objects.filter(user_id = user.id)
+    contacts = contacts.order_by('-contact_date')
+    context = {
+        'contacts': contacts
+    }
+    return render(request, 'accounts/dashboard.html', context)

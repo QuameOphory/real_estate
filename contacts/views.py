@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Contact
 from django.contrib import messages
 from django.urls import reverse
+from django.contrib import auth
 
 # Create your views here.
 
@@ -15,6 +16,16 @@ def contact(request):
         email = request.POST['email']
         phone = request.POST['phone']
         message = request.POST['message']
+        
+        user = auth.get_user(request)
+        if user is not None:
+            contacts = Contact.objects.filter(user_id=user.id)
+            if contacts.filter(listing_id=listing_id).exists():
+                messages.info(
+                    request,
+                    'You have already made an inquiry on this property'
+                )
+                return redirect('/listings/'+listing_id)
 
         contact = Contact(
             listing=listing,
